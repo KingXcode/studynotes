@@ -13,7 +13,7 @@
 
 4. 选择自己的仓库，将仓库改成使用SSH。`至此，github上的操作已经完成`
 
-5. 将以下图片中的url复制下来
+5. 将以下图片中的url复制下来\
 ![](resources/sshurl.png)
 
 6. 将本地的git仓库与git仓库关联（ps.实际上从这一步开始，方法就很多了，不一定是用这里的方法关联仓库）。终端中输入`git remote add origin git@github.com:KingXcode/studynotes.git`这样就会关联上。
