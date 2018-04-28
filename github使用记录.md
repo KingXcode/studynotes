@@ -3,6 +3,9 @@
 1. `git config --global user.name  "xxx"`\
 2. `git config --global user.email "xxx@xxx.com"`
 
+克隆仓库  `git clone <版本库的网址>`
+
+
 ###设置流程：
 1. 首先在~/.ssh目录下生成`rsa文件`，输入`ssh-keygen -t rsa -C “xxx@xxx.com”`将会生成。此处的邮箱填写github上关联的邮箱
 
