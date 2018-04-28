@@ -216,7 +216,20 @@ if ([predicate evaluateWithObject:string]) {
     NSLog(@"string:%@", string);
 }
 ```
-####(4)过滤数组中重复的元素  模型数组通用
+###(4)对象数组过滤 这个方法太好了,太强大
+```objc
+Person *model_0 = [[Person alloc]initWithName:@"45xiaomiyang"];
+Person *model_1 = [[Person alloc]initWithName:@"shabi"];
+Person *model_2 = [[Person alloc]initWithName:@"beijing"];
+Person *model_3 = [[Person alloc]initWithName:@"hahayang"];
+Person *model_4 = [[Person alloc]initWithName:@"niesiyang"];
+
+NSArray *array = [[NSArray alloc]initWithObjects:model_0,model_1,model_2,model_3,model_4, nil];
+NSPredicate *pred = [NSPredicate predicateWithFormat:@"self.name.integerValue <= 20"];
+NSLog(@"%@",[array filteredArrayUsingPredicate:pred]);
+```
+
+####(5)过滤数组中重复的元素  模型数组通用
 ```objc
 /**
  根据modelArray中的属性 去除重复的元素
