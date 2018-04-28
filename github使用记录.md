@@ -3,7 +3,13 @@
 1. `git config --global user.name  "xxx"`\
 2. `git config --global user.email "xxx@xxx.com"`
 
-克隆仓库  `git clone <版本库的网址>`
+克隆仓库  
+`git clone <版本库的网址>`
+
+显示工作目录和暂存区的状态\
+`git status`\
+`使用此命令能看到那些修改被暂存到了, 哪些没有, 哪些文件没有被Git tracked到。git status不显示已经commit到项目历史中去的信息。看项目历史的信息要使用git log.`
+
 
 
 ###设置流程：
