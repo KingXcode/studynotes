@@ -217,6 +217,7 @@ if ([predicate evaluateWithObject:string]) {
 }
 ```
 ###(4)对象数组过滤 这个方法太好了,太强大
+
 ```objc
 Person *model_0 = [[Person alloc]initWithName:@"45xiaomiyang"];
 Person *model_1 = [[Person alloc]initWithName:@"shabi"];
