@@ -281,3 +281,50 @@ NSData *data = UIImagePNGRepresentation(newImage);
 NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"new.png"];
 [data writeToFile:path atomically:YES];
 ```
+
+###屏幕截图示例
+核心代码:
+`- (void)renderInContext:(CGContextRef)ctx;`\
+调用某个 `view` 的 `layer` 的 `renderInContext:`方法即可
+
+示例代码:
+
+```
+// 1.开启上下文
+UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, 0.0);
+
+// 2.将控制器 view 的 layer 渲染到上下文
+[view.layer renderInContext:UIGraphicsGetCurrentContext()];
+
+// 3.取出图片
+UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+// 4.写文件
+NSData *data = UIImagePNGRepresentation(newImage);
+NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"new.png"];
+[data writeToFile:path atomically:YES];
+
+// 5.结束上下文
+UIGraphicsEndImageContext();
+```
+
+###OC 中自带画图方法
+```
+// 1.获得当前的触摸点
+UITouch *touch = [touches anyObject];
+CGPoint startPos = [touch locationInView:touch.view];
+
+// 2.创建一个新的路径
+UIBezierPath *currenPath = [UIBezierPath bezierPath];//也可用 alloc init 方法创建 currenPath.lineCapStyle = kCGLineCapRound;
+currenPath.lineJoinStyle = kCGLineJoinRound;
+
+// 3.设置起点
+[currenPath moveToPoint:startPos];
+
+//4.连线
+[currentPath addLineToPoint:endPos];
+
+```
+
+判断一个点是否在一个矩形框内:\
+CGRectContainsPoint(rect,point);//判断 point 这个点是否在 rect 这个矩形框内
