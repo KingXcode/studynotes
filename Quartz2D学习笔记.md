@@ -1,7 +1,7 @@
 Quartz2D学习记录
 ---------------
 
-#####Quartz2D 概述及作用
+##### Quartz2D 概述及作用
 
 Quartz2D 的 API 是纯 C 语言的，Quartz2D 的 API 来自于 Core Graphics 框架。
 
@@ -61,7 +61,7 @@ Quartz 2D 能完成的工作:
 
 ---
 
-####drawRect?
+#### drawRect?
 为什么要实现`drawRect:`方法才能绘图到 `view` 上?\
 因为在`drawRect:`方法中才能取得跟 `view` 相关联的图形上下文。\
 `drawRect:`方法在什么时候被调用?
@@ -156,7 +156,7 @@ void CGContextTranslateCTM(CGContextRef c, CGFloat tx, CGFloat ty)
 ```
 ---
 
-###Quartz2D 的内存管理
+### Quartz2D 的内存管理
 关于内存管理，有以下原则:
 
 (1)使用含有`“Create”`或`“Copy”`的函数创建的对象，使用完后必须释放，否则将导致内存泄露。 \
@@ -167,7 +167,7 @@ void CGContextTranslateCTM(CGContextRef c, CGFloat tx, CGFloat ty)
 
 ---
 
-###图片水印示例
+### 图片水印示例
 
 
 实现方式:\
@@ -220,7 +220,7 @@ stringByAppendingPathComponent: @"new.png"];
 
 
 
-###图片裁剪示例
+### 图片裁剪示例
 核心代码:\
 `void CGContextClip(CGContextRef c)`\
 将当前上下所绘制的路径裁剪出来(超出这个裁剪区域的都不能显示)
@@ -282,7 +282,7 @@ NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUs
 [data writeToFile:path atomically:YES];
 ```
 
-###屏幕截图示例
+### 屏幕截图示例
 核心代码:
 `- (void)renderInContext:(CGContextRef)ctx;`\
 调用某个 `view` 的 `layer` 的 `renderInContext:`方法即可
@@ -308,7 +308,7 @@ NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUs
 UIGraphicsEndImageContext();
 ```
 
-###OC 中自带画图方法
+### OC 中自带画图方法
 ```
 // 1.获得当前的触摸点
 UITouch *touch = [touches anyObject];

@@ -14,7 +14,7 @@
 `git diff`
 
 
-###设置流程：
+### 设置流程：
 1. 首先在~/.ssh目录下生成`rsa文件`，输入`ssh-keygen -t rsa -C “xxx@xxx.com”`将会生成。此处的邮箱填写github上关联的邮箱
 
 2. 登陆github网站，点击右上角头像选择【Settings】，然后选择【SSH and GPG keys】，点击【New SSH key】

@@ -1,9 +1,9 @@
 关于 NSPredicate
 ==================
-######简述：Cocoa框架中的NSPredicate用于查询，原理和用法都类似于SQL中的where，作用相当于数据库的过滤取。
+###### 简述：Cocoa框架中的NSPredicate用于查询，原理和用法都类似于SQL中的where，作用相当于数据库的过滤取。
 
-###常用的表达式
-####(1)比较运算符>,<,==,>=,<=,!=,可用于数值及字符串
+### 常用的表达式
+#### (1)比较运算符>,<,==,>=,<=,!=,可用于数值及字符串
 >=、==：判断两个表达式是否相等，在谓词中=和==是相同的意思都是判断，而不是赋值
 例：
   ```objc
@@ -14,7 +14,7 @@
   }
   ```
 
-####(2)范围运算符：IN、BETWEEN
+#### (2)范围运算符：IN、BETWEEN
 例：
 ```objc
 @"number BETWEEN {1,5}"
@@ -22,13 +22,13 @@
 ```
 
 
-####(3)字符串本身:SELF
+#### (3)字符串本身:SELF
 例：
 ```objc
 @"SELF == ‘APPLE’"
 ```
 
-####(4)字符串相关：BEGINSWITH、ENDSWITH、CONTAINS、LIKE
+#### (4)字符串相关：BEGINSWITH、ENDSWITH、CONTAINS、LIKE
 
 >`BEGINSWITH` ：检查某个字符串是否以指定的字符串开头
 
@@ -61,7 +61,7 @@ NSPredicate *predicate = [NSPredicate predicateWithFormat:string];
 那么不论`name`是cafe、Cafe还是café上面的表达式都会返回YES。
 ```
 
-####(5)正则表达式：MATCHES
+#### (5)正则表达式：MATCHES
 
 >`MATCHES`：检查某个字符串是否匹配指定的正则表达式。虽然正则表达式的执行效率并不高，但其功能是最强大的，也是我们最常用的。`[c]`,`[d]`,`[cd]`同样适用
 例：
@@ -74,7 +74,7 @@ NSPredicate *predicate = [NSPredicate predicateWithFormat:string];
 ```  
 正则表达式请参考：[iOS正则表达式的简单使用](http://www.jianshu.com/p/4b2bad4ad3e8)
 
-####(6)集合运算符
+#### (6)集合运算符
 >`ANY、SOME` ：集合中任意一个元素满足条件，就返回YES。
 
 >`ALL` ：集合中所有元素都满足条件，才返回YES。
@@ -91,7 +91,7 @@ NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (SELF IN %@)", f
 NSLog(@"%@", [array filteredArrayUsingPredicate:predicate]);
 ```
 
-####(7)直接量
+#### (7)直接量
 >`FALSE、NO`：代表逻辑假
 
 >`TRUE、YES`：代表逻辑真
@@ -112,12 +112,12 @@ NSLog(@"%@", [array filteredArrayUsingPredicate:predicate]);
 
 >`二进制`：0b开头的数字
 
-####(8)保留字 （不区分大小写）
+#### (8)保留字 （不区分大小写）
 >AND、OR、IN、NOT、ALL、ANY、SOME、NONE、LIKE、CASEINSENSITIVE、CI、MATCHES、CONTAINS、BEGINSWITH、ENDSWITH、BETWEEN、NULL、NIL、SELF、TRUE、YES、FALSE、NO、FIRST、LAST、SIZE、ANYKEY、SUBQUERY、CAST、TRUEPREDICATE、FALSEPREDICATE
 
 
-###提示
-#####实际上在实际开发中OC对几个集合类提供了NSPredicate的过滤方法
+### 提示
+##### 实际上在实际开发中OC对几个集合类提供了NSPredicate的过滤方法
 - NSArray提供了如下方法使用谓词来过滤集合
 `- (NSArray *)filteredArrayUsingPredicate:(NSPredicate *)predicate:`使用指定的谓词过滤NSArray集合，返回符合条件的元素组成的新集合
 
@@ -190,15 +190,15 @@ NSLog(@"newArray2:%@", newArray2);
 
 
 
-###代码应用
-####(1)对NSArray进行过滤
+### 代码应用
+#### (1)对NSArray进行过滤
 ```objc
 NSArray *array = [[NSArray alloc]initWithObjects:@"beijing",@"shanghai",@"guangzou",@"wuhan", nil];   
 NSString *string = @"ang";   
 NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF CONTAINS %@",string];   
 NSLog(@"%@",[array filteredArrayUsingPredicate:pred]);
 ```
-####(2)判断字符串首字母是否为字母:
+#### (2)判断字符串首字母是否为字母:
 ```objc
 NSString *regex = @"[A-Za-z]+";
 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
@@ -208,7 +208,7 @@ if ([predicate evaluateWithObject:@"rrrkmr"]) {
     NSLog(@"2");
 }
 ```
-####(3)检查某个字符串是否以指定的字符串开头
+#### (3)检查某个字符串是否以指定的字符串开头
 ```objc
 NSString *string = @"abcdefg";
 NSPredicate *predicate = [NSPredicate predicateWithFormat:@" %@ BEGINSWITH 'a'",string];
@@ -216,7 +216,7 @@ if ([predicate evaluateWithObject:string]) {
     NSLog(@"string:%@", string);
 }
 ```
-###(4)对象数组过滤 这个方法太好了,太强大
+### (4)对象数组过滤 这个方法太好了,太强大
 
 ```objc
 Person *model_0 = [[Person alloc]initWithName:@"45xiaomiyang"];
@@ -230,8 +230,8 @@ NSPredicate *pred = [NSPredicate predicateWithFormat:@"self.name.integerValue <=
 NSLog(@"%@",[array filteredArrayUsingPredicate:pred]);
 ```
 
-####(5)过滤数组中重复的元素  模型数组通用
-```objc
+#### (5)过滤数组中重复的元素  模型数组通用
+```java
 /**
  根据modelArray中的属性 去除重复的元素
  目前我的测试中 NSString 和 int类型是没有问题的,过滤正常.

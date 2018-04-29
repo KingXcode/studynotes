@@ -16,7 +16,7 @@
 
 &emsp;&emsp;后来我在实际中发现只是在NSString这个类型的数据会缩减源代码,array,dict等等并不会缩短,反而源代码会更长,这里说明OC底层是对string这个类型的对象做过一些内存和代码上的优化的.
 
-```
+```java
 NSString *string = (NSString *)&__NSConstantStringImpl__var_folders_rx_l216t3ws3yv2b58z7dpkr8zr0000gn_T_main_eaaf03_mi_0;
 NSString *string = ((NSString *(*)(id, SEL, NSString *, ...))(void *)objc_msgSend)((id)objc_getClass("NSString"), sel_registerName("stringWithFormat:"), (NSString *)&__NSConstantStringImpl__var_folders_rx_l216t3ws3yv2b58z7dpkr8zr0000gn_T_main_81564b_mi_0);
 NSArray *arrayA = [NSArray arrayWithObject:@"wo"];
@@ -31,7 +31,7 @@ NSArray *arrayB = ((NSArray *(*)(id, SEL, const ObjectType *, NSUInteger))(void 
 
 这里关于OC数组再提及一下,
 
-```
+```objc
 假设我现在有三个对象 obj1,obj2,obj3,obj4
 
 NSArray *arrayA = [NSArray arrayWithObjects:obj1,obj2,obj3,obj4,nil];

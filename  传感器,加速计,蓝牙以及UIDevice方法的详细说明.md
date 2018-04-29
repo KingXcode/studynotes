@@ -1,4 +1,4 @@
-###距离传感器:
+### 距离传感器:
 `2016年04月05日 10:32:51发布于csdn`
 
 网上关于距离传感器使用很简单,流程也少.下面用代码解释下怎么启动距离传感器并且进行监听。
@@ -24,7 +24,7 @@
 }
 ```
 
-###加速度传感器:
+### 加速度传感器:
 在iOS4以前使用UIAccelerometer来获取到设备的加速度,用法简单,但是在iOS5时已经过期.
 
 但是从iOS4开始苹果提供了一个库,CoreMotion.framework来获取设备的加速度信息,功能更加强大
@@ -76,7 +76,7 @@ self.mgr.accelerometerUpdateInterval = 0.1 ;/// 30.0;
 
         }];
 ```
-###UIDevice
+### UIDevice
 
 ```
 typedef NS_ENUM(NSInteger, UIDeviceOrientation) //设备方向

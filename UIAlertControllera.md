@@ -1,4 +1,4 @@
-######本来想研究下UIAlertController怎么能自定义界面，结果苹果没有提供相应的方法，没有办法进行自定制，结果从网上找出的一些方法都是都不好用，于是想到用私有的属性设置，于是使用runtime打印出alertController和alertAction的属性，然后用利用kvc进行私有属性的设置，发现也只能很简单的进行简单的定制。比如 action设置左边的图片，右边设置打钩的状态，这些私有属性都贴在文章后面，下面简单写点alertController 的用法。
+###### 本来想研究下UIAlertController怎么能自定义界面，结果苹果没有提供相应的方法，没有办法进行自定制，结果从网上找出的一些方法都是都不好用，于是想到用私有的属性设置，于是使用runtime打印出alertController和alertAction的属性，然后用利用kvc进行私有属性的设置，发现也只能很简单的进行简单的定制。比如 action设置左边的图片，右边设置打钩的状态，这些私有属性都贴在文章后面，下面简单写点alertController 的用法。
 
 ```
 + (instancetype)alertControllerWithTitle:(nullable NSString *)title
