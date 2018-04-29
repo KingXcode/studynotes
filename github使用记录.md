@@ -14,13 +14,13 @@
 `git diff`
 
 
-### 设置流程：
+### MAC设置流程：
 1. 首先在~/.ssh目录下生成`rsa文件`，输入`ssh-keygen -t rsa -C “xxx@xxx.com”`将会生成。此处的邮箱填写github上关联的邮箱
 
 2. 登陆github网站，点击右上角头像选择【Settings】，然后选择【SSH and GPG keys】，点击【New SSH key】
 ![](resources/settingssh.png)
 
-3. 然后将第一步生成的`id_rsa.pub`文件用编辑器打开，将内容复制到第二步打开的页面中。点击【Add SSh key】保存。
+3. 然后将第一步生成的`id_rsa.pub`文件用编辑器打开，将内容复制到第二步打开的页面中。点击【Add SSh key】保存。验证一下是否设置成功,输入如下命令：`ssh –T git@github.com`
 
 4. 选择自己的仓库，将仓库改成使用SSH。`至此，github上的操作已经完成`
 
@@ -30,3 +30,9 @@
 6. 将本地的git仓库与git仓库关联（ps.实际上从这一步开始，方法就很多了，不一定是用这里的方法关联仓库）。终端中输入`git remote add origin git@github.com:KingXcode/studynotes.git`这样就会关联上。
 
 7. 然后输入`git push -u origin master`将项目push到主分支上
+
+
+### windows部分设置
+1. 输入`ssh-keygen –t rsa –C “邮箱地址”`,生成`id_rsa.pub`，将字符串复制下来拷贝至github上与mac设置一样。
+
+2. 验证一下是否设置成功,在`git bash`下输入如下命令：`ssh –T git@github.com`
