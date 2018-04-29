@@ -1,6 +1,6 @@
-`显示隐藏文件夹快捷方式：command+shift+.`\
-`配置git用户`\
-1. `git config --global user.name  "xxx"`\
+`显示隐藏文件夹快捷方式：command+shift+.`
+`配置git用户`
+1. `git config --global user.name  "xxx"`
 2. `git config --global user.email "xxx@xxx.com"`
 
 克隆仓库  
