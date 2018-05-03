@@ -76,6 +76,7 @@ self.mgr.accelerometerUpdateInterval = 0.1 ;/// 30.0;
 
         }];
 ```
+
 ### UIDevice
 
 ```
