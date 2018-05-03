@@ -50,24 +50,23 @@
     快捷键：`ht_cehua`
 
     输出：
-    ```
-UIScreenEdgePanGestureRecognizer *ges = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:nil];
-ges.edges = UIRectEdgeLeft;// 指定左边缘滑动
-[self.view addGestureRecognizer:ges];
-    ```
+`UIScreenEdgePanGestureRecognizer *ges = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:nil];`
+`ges.edges = UIRectEdgeLeft;// 指定左边缘滑动`
+`[self.view addGestureRecognizer:ges];`
+
 
 - 快速创建按钮
 
     快捷键：`ht_creatButton`
 
     输出：
-    ```
-UIButton *<#button#> = [UIButton buttonWithType:UIButtonTypeCustom];
-[<#button#> setTitleColor:[MyColor pg_mainTitleColor] forState:UIControlStateNormal];
-<#button#>.titleLabel.font = [UIFont systemFontOfSize:<#size#>];
-[<#button#> setTitle:@"" forState:UIControlStateNormal];
-<#button#>.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    ```
+
+  `UIButton *<#button#> = [UIButton buttonWithType:UIButtonTypeCustom];`
+`[<#button#> setTitleColor:[MyColor pg_mainTitleColor] forState:UIControlStateNormal];`
+`<#button#>.titleLabel.font = [UIFont systemFontOfSize:<#size#>];`
+`[<#button#> setTitle:@"" forState:UIControlStateNormal];`
+`<#button#>.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;`
+
 
 - 键盘监听
 
