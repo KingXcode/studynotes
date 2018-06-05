@@ -68,7 +68,7 @@
 `<#button#>.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;`
 
 
-- 键盘监听
+- 键盘监听,记得移除监听
 
     快捷键：`ht_keyboarderObeserver`
 
