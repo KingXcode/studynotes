@@ -1,6 +1,7 @@
 >用AVFoudation进行视频录制相对UIImagePickerController来说复杂，涉及到的相关类也更多，打个比喻，就是我想在要用积木搭房子，但是我现在只有一堆非常零碎的零件来进行组装。如下，要进行视频录制并且保存我总结了一个相关步骤。
 
 
+
 - 第一步：导入相关的头文件`#import <AVFoundation/AVFoundation.h>`
 
 - 第二步：创建`session`会话对象，并且设置捕获质量
@@ -24,7 +25,7 @@
 
 
 ### 代码：
-- 首先定义session和output
+- 首先定义session 和 output
 ```
 @property (nonatomic,strong) AVCaptureSession *session;
 @property (nonatomic,strong) AVCaptureMovieFileOutput *output;
@@ -32,10 +33,10 @@
 
 - 然后实现对应方法：
 
-```
+```objc
 self.session = [[AVCaptureSession alloc]init];
 
-//设置捕获视频的质量
+//设置捕获视频的质量---
 self.session.sessionPreset = AVCaptureSessionPresetHigh;
 NSError *error;
 
