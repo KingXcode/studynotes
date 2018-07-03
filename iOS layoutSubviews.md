@@ -1,4 +1,3 @@
-# iOS layoutSubviews的作用与调用时机
 
 > -(void)layoutSubviews; 这个方法是UIView中的一个常用方法，这个方法本身没有做任何事情，需要子类进行重写。
 

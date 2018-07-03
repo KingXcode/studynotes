@@ -1,25 +1,16 @@
 >用AVFoudation进行视频录制相对UIImagePickerController来说复杂，涉及到的相关类也更多，打个比喻，就是我想在要用积木搭房子，但是我现在只有一堆非常零碎的零件来进行组装。如下，要进行视频录制并且保存我总结了一个相关步骤。
 
-
-
 - 第一步：导入相关的头文件`#import <AVFoundation/AVFoundation.h>`
-
 - 第二步：创建`session`会话对象，并且设置捕获质量
-
 - 第三步：创建对应媒体类型的`device`对象和`deviceInput`对象
-
 - 第四步：将对应的`input`对象添加进入`session`中
-
 - 第五步：创建文件输出对象`AVCaptureMovieFileOutput`，并且将该对象添加进`session`中的`output`中。
 
 至此，设备初始化的工作完成。
 
 - 第六步：根据`session`创建`AVCaptureVideoPreviewLayer`层，并且设置好`frame`
-
 - 第七步：将创建好的`layer`添加到相应的`view`上去。此时`session`调用`startRunning`，就能将摄像头捕捉到的影像在`layer`中显示。
-
 - 第八步：定义好`fileurl`用作存储录制视频的路径。`fileURLWithPath：`记住一定是用这个方法创建的`url`。否者会异常。
-
 - 第九步：`AVCaptureMovieFileOutput`的实例调用`startRecordingToOutputFileURL:recordingDelegate:`方法开始讲摄像头捕捉的视频保存进之前设定好的`fielurl`
 
 
@@ -109,3 +100,5 @@ if (error == nil) {
     }];
 }
 ```
+
+
