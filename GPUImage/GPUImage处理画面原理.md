@@ -6,7 +6,7 @@
         - 中间环节的target, 一般是各种filter, 是GPUImageFilter或者是子类。
         - 最终环节的target, GPUImageView：用于显示到屏幕上, 或者GPUImageMovieWriter：写成视频文件。
 - GPUImage处理主要分为3个环节。
-    >source(视频、图片源) -> filter（滤镜） -> final target (处理后视频、图片)
+    > source(视频、图片源) -> filter（滤镜） -> final target (处理后视频、图片)
     - GPUImaged的Source:都继承GPUImageOutput的子类，作为GPUImage的数据源,就好比外界的光线，作为眼睛的输出源。
         - `GPUImageVideoCamera：`用于实时拍摄视频
         - `GPUImageStillCamera：`用于实时拍摄照片

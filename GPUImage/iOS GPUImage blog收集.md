@@ -16,6 +16,12 @@
 
 [GPUImage详细解析（五）滤镜视频录制](https://www.jianshu.com/p/4701d006b514)
 
+[GPUImage详细解析（六）用视频做视频水印](https://www.jianshu.com/p/722d65bac58d)
+
+[GPUImage详细解析（七）文字水印和动态图像水印](https://www.jianshu.com/p/965df0f28014)
+
+[GPUImage详细解析（八）视频合并混音](https://www.jianshu.com/p/c2b9af191c7d)(关于视频合并混音，这方面的功能还是不适合GPUImage，使用AVF更合适)
+
 [iOS GPUImage研究总结](https://blog.csdn.net/xoxo_x/article/details/52695032)
 
 [GPUImageSDK 美颜](https://blog.csdn.net/qq_29846663/article/details/53707482)

@@ -50,6 +50,7 @@
     movieFile2 = [[THImageMovie alloc] initWithURL:sampleURL2];
     movieFile2.runBenchmark = YES;
     movieFile2.playAtActualSpeed = YES;
+    
 //
     NSArray *thMovies = @[movieFile, movieFile2];
 

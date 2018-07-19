@@ -69,6 +69,8 @@
     GPUImageFilter* progressFilter = [[GPUImageFilter alloc] init];
     [movieFile addTarget:progressFilter];
     [progressFilter addTarget:filter];
+     
+    
     [uielement addTarget:filter];
     movieWriter.shouldPassthroughAudio = YES;
     movieFile.audioEncodingTarget = movieWriter;

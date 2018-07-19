@@ -118,6 +118,7 @@
 {
     self.mLabel.text = [NSString stringWithFormat:@"Progress:%d%%", (int)(movieFile.progress * 100)];
     [self.mLabel sizeToFit];
+    
 }
 
 
