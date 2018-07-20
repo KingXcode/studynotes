@@ -23,6 +23,10 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:imageView];
     self.mImageView = imageView;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     [self onCustom];
 }
 

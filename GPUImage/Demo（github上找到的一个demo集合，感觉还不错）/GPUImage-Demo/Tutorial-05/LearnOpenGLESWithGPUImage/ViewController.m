@@ -70,6 +70,7 @@
     
     // 设置滤镜组链
     [bilateralFilter addTarget:brightnessFilter];
+    
     [groupFilter setInitialFilters:@[bilateralFilter]];
     groupFilter.terminalFilter = brightnessFilter;
     
