@@ -1,6 +1,7 @@
 ### 距离传感器:
 `2016年04月05日 10:32:51发布于csdn`
 
+
 网上关于距离传感器使用很简单,流程也少.下面用代码解释下怎么启动距离传感器并且进行监听。
 ```
 // 1.开启距离传感器(注意: 默认情况距离传感器是关闭的)
@@ -210,3 +211,5 @@ UIKIT_EXTERN NSString *const UIDeviceBatteryLevelDidChangeNotification   NS_AVAI
 
 UIKIT_EXTERN NSString *const UIDeviceProximityStateDidChangeNotification NS_AVAILABLE_IOS(3_0); // 接近状态变化通知
 ```
+
+
