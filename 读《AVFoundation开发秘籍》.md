@@ -60,6 +60,7 @@ AVFoudation 是MacOS和iOS系统中**用于处理基于时间的媒体数据的�
     Multi-Route | 使用外部硬件的高级A/V应用程序 |  | ☑️ | ☑️ |
     
     ```objc
+    //这段代码是全局设置 自己考虑 应该放在哪里（不知道放在哪就放在Appdelegate.m中）
     AVAudioSession *session = [AVAudioSession sharedInstance];
     NSError *error;
     if(![session setCategory:AVAudioSessionCategoryPlayback error:&error])
@@ -72,4 +73,48 @@ AVFoudation 是MacOS和iOS系统中**用于处理基于时间的媒体数据的�
     }
     ```
     AVAudioSession提供了与应用程序音频会话交互的接口，所以开发者需要去的指向改单例的指针。通过设置合适的分类，开发者可以为音频的播放指定需要的音频会话，其中定制一些行为。最后告知该音频会话激活改配置。
+
+- AVAudioPlayer的简单介绍
+    - 这个类提供了两种方法进行创建，使用包好音频的内存版本的NSData或者本地音频文件的NSURL。这个类是AVFoudation中提供音频播放功能的类。 
+    - AVAudioPlayer构建于Core Audio中的`C-Based Audio Queue Services`的最顶层。
+    - 除非 需要从网络流中播放音频、访问原始音频样本或者需要非常低的时延，这个类基本上能胜任平常需要用到的功能。
+    - 在创建AVAudioPlayer的实例之后可以通过调用`prepareToplay`对音频进行预加载，降低调用`play`方法时和听到的声音之间的时延。推荐调用`prepareToplay`
+    - `pause`和`stop`能实现停止当前的播放行为。当然主要的区别是：调用`stop`会撤销调用`prepareToplay`时所做的设置。
+    
+    ```
+    1. 可以通过修改实例的volume属性调节音量。
+    2. 通过修改pan属性调节立体音。
+    3. 通过修改rate属性修改音频的播放速率。
+    4. 通过修改currentTime属性修改音频的播放进度。
+    5. 通过修改numberOfLoops设置音频的循环播放次数。当属性 == -1时，会导致播放器的无限循环播放。
+    ```
+
+
+    - 处理中断事件
+注册`AVAudioSession`发送的通知`AVAudioSessionInterruptionNotification`
+
+    ```
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TTT:) object:[AVAudioSession sharedInstance]]
+    //在TTT:这个方法中接受到的notification对象中能取userInfo
+    
+    AVAudioSessionInterruptionType type = [notification.userInfo[AVAudioSessionInterruptionTypeKey] intValue];
+    
+    //这个type就是中断的类型，通过这个参数可以知道当前的中断具体事什么状态。如果是began则是中断开始，此时处理音频暂停的逻辑（调用音乐暂停，并处理UI相关逻辑）。如果是end则是终端结束，此时处理终端结束的逻辑（根据实际情况判断音频是不是需要重新开启）
+    ```
+
+    - 线路改变通知
+注册`AVAudioSession`发送的通知`AVAudioSessionRouteChangeNotification`
+同样在userInfo中取`notification.userInfo[AVAudioSessionRouteChangeReasonKey]`得到是不是有新的设备接入火接入设备是否改变。
+从中判断当前切换的线路，根据实际情况的线路决定音频播放与否
+![IMG_1385](media/IMG_1385.jpg)
+
+
+- 音频录制 `AVAudioRecorder`
+    类似于`AVAudioPlayer`的`prepareToplay`预加载功能，`AVAudioRecorder`也有`prepareToRecord`
+    1. 音频格式
+    2. 采样率
+    3. 通道数
+    4. 指定格式的键
+    
+
 
