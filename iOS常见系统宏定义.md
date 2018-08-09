@@ -16,6 +16,10 @@
 2. 方法在哪个版本弃用了
     - NS_DEPRECATED_IOS(2_0,6_0) 前面2_0代表iOS系统，表示这个方法被引用时的iOS版本，后面6_0代表iOS系统，表示这个方法被弃用时的iOS版本。被弃用并不是指这个方法就不存在，它会告诉用户去使用新方法
 
+    ```objc
+    #define HTDeprecated(instead) NS_DEPRECATED(2_0, 2_0, 2_0, 2_0, instead)
+    ```
+
 3. 方法被弃用了   *==这个方法可能用到==*
     - DEPRECATED_ATTRIBUTE 它会告诉编译器该方法被弃用了
 
@@ -48,6 +52,30 @@
     #else
         // 这里写设备系统大于7.0以上的代码
     #endif
+    ```
+
+6. 日志输出
+
+    ```
+    #ifdef DEBUG
+    #define HTLog(...) NSLog(__VA_ARGS__)
+    #else
+    #define HTLog(...)
+    #endif
+    //此示例的DEBUG不唯一，如果定义了多个target可以去自定义
+    ```
+
+7. 指定初始化方法`NS_DESIGNATED_INITIALIZER`
+
+    即接收参数最多的那个初始化方法，其他初始化方法调用它即可，这样设计的目的是为了保证所有初始化方法都正确地初始化实例变量。
+    在方法后面加上`NS_DESIGNATED_INITIALIZER`宏即可。这样，当你子类化这个类时，在子类的初始化方法里如果没有正确地调用父类的designated initializer，编译器就会给出警告。
+    实例代码：
+
+    ```objc 
+    @interface WKWebView : UIView
+    - (instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
+    - (nullable instancetype)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
+    @end
     ```
 
 
