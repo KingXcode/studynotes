@@ -63,3 +63,5 @@ math.h 数学函数库
  `double modf (double x, double *ip);` 将参数的整数部分通过指针回传, 返回小数部分，整数部分保存在*ip中
 
  `double fmod (double x, double y);` 返回两参数相除x/y的余数,符号与x相同。如果y为0，则结果与具体的额实现有关
+
+

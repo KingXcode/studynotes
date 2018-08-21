@@ -183,6 +183,47 @@ Ps. 实际上使用这个命令的时候，有的时候文件的内容是会回�
 
 ## Git检出
 
+> 重置命令(reset)一般用于重置暂存区（除非使用`--hard`参数，否则不重置工作区）
 
+> 检出命令(checkout)主要是覆盖工作区（如果`<commit>`不省略，也会替换暂存区中相应的文件)
+
+检出命令（git checkout）是Git最常用的命令之一，同样也很危险，因为这条命令会重写工作区。
+
+```objc
+用法一： git checkout [-q] [<commit>] [--] <paths>...
+用法二： git checkout [<branch>]
+用法三： git checkout [-m] [[-b|--orphan] <new_branch>] [<start_point>]
+```
+
+用法一的<commit>是可选项，如果省略则相当于从暂存区（index）进行检出。
+
+- 第一种用法（包含了路径<paths>的用法）不会改变HEAD头指针，主要是用于指定版本的文件覆盖工作区中对应的文件。如果省略<commit>，会拿暂存区的文件覆盖工作区的文件，否则用指定提交中的文件覆盖暂存区和工作区中对应的文件。
+- 第二种用法（不使用路径<paths>的用法）则会改变HEAD头指针。之所以后面的参数写作<branch>，是因为只有HEAD切换到一个分支才可以对提交进行跟踪，否则仍然会进入“分离头指针”的状态。在“分离头指针”状态下的提交不能被引用关联到而可能会丢失。所以用法二最主要的作用就是切换到分支。如果省略<branch>则相当于对工作区进行状态检查。
+- 第三种用法主要是创建和切换到新的分支（<new_branch>），新的分支从<start_point>指定的提交开始创建。新分支和我们熟悉的master分支没有什么实质的不同，都是在refs/heads命名空间下的引用。
+![](media/15348316344265.png)
+
+- 命令：`git checkout branch`
+
+    检出branch分支。要完成如图的三个步骤，更新HEAD以指向branch分支，以branch指向的树更新暂存区和工作区。
+    
+- 命令：`git checkout`
+- 命令：`git checkout HEAD`
+ 
+    汇总显示工作区、暂存区与HEAD的差异。
+    
+- 命令：`git checkout – filename`
+
+    用暂存区中`filename`文件来覆盖工作区中的`filename`文件。相当于取消自上次执行`git add filename`以来（如果执行过）本地的修改。
+
+- 命令：`git checkout branch – filename`
+
+    维持`HEAD`的指向不变。将`branch`所指向的提交中的`filename`替换暂存区和工作区中相应的文件。注意会将暂存区和工作区中的`filename`文件直接覆盖。
+
+- 命令：`git checkout – .` 或写做 `git checkout .`
+
+    注意：`git checkout`命令后的参数为一个点（“.”）。这条命令最危险！会取消所有本地的修改（相对于暂存区）。相当于将暂存区的所有文件直接覆盖本地文件，不给用户任何确认的机会！
+
+
+## Git恢复进度
 
 
