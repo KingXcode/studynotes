@@ -5,6 +5,13 @@ git add <fileName> //将指定文件添加进暂存区
 git add .          //将所有有变化的文件添加暂存区
 git commit -m "备注"//将暂存区中的变化添加进工作区
 git status -s      //将文件的状态精简的输出
+git push origin master  //将本地仓库的master分支推送合并到远程仓库中
+git pull origin master  //将远程仓库的master分支合并到本地仓库
+git reset //将之前用git add命令更新到暂存区的内容撤出暂存区
+git reset - <fileName>  //指定文件将之从暂存区撤销 
+git reset HEAD^         //撤销最新的一次add和commit
+git checkout .  //放弃当前目录下的修改
+git checkout <filename>  //放弃单个文件的修改
 ```
 
 ```
@@ -53,4 +60,34 @@ git checkout filename
 /// 相当于将暂存区的所有文件直接覆盖本地文件，不给用户任何确认的机会！
 git checkout . 
 ```
+
+> 命令`git stash`可以用于保存和恢复工作进度
+
+```git
+/// 保存当前工作进度。会分别对暂存区和工作区的状态进行保存。
+git stash
+
+/// 显示进度列表。此命令显然暗示了`git stash`可以多次保存工作进度，并且在恢复的时候进行选择。
+git stash list
+
+/// 如果不使用任何参数，会恢复最新保存的工作进度，并将恢复的工作进度从存储的工作进度列表中清除
+/// 如果提供<stash>参数（来自于git stash list显示的列表），则从该<stash>中恢复。恢复完毕也将从进度列表中删除<stash>
+/// 选项--index除了恢复工作区的文件外，还尝试恢复暂存区
+git stash pop [–index] [<stash>]
+
+/// 除了不删除恢复的进度之外，其余和git stash pop命令一样。
+git stash apply [–index] [<stash>]
+
+/// 删除指定的一个进度，默认删除最新的进度
+/// 使用方法如git stash drop stash@{0}
+git stash drop
+
+/// 删除所有存储的进度
+git stash clear
+
+/// 显示stash的内容具体是什么，默认显示最新的进度
+/// 使用方法如 git stash show stash@{0}
+git stash show
+```
+
 

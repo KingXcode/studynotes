@@ -226,4 +226,39 @@ Ps. 实际上使用这个命令的时候，有的时候文件的内容是会回�
 
 ## Git恢复进度
 
+### 使用`git stash`
+
+**命令`git stash`可以用于保存和恢复工作进度**
+**命令`git stash`可以将当前的工作状态保存到git栈，在需要的时候再恢复**
+
+- 命令：`git stash`
+
+    保存当前工作进度。会分别对暂存区和工作区的状态进行保存。
+    
+- 命令：`git stash list`
+
+    显示进度列表。此命令显然暗示了`git stash`可以多次保存工作进度，并且在恢复的时候进行选择。
+
+- 命令：`git stash pop [–index] [<stash>]`
+
+    - 如果不使用任何参数，会恢复最新保存的工作进度，并将恢复的工作进度从存储的工作进度列表中清除。
+    - 如果提供<stash>参数（来自于git stash list显示的列表），则从该<stash>中恢复。恢复完毕也将从进度列表中删除<stash>。
+    - 选项--index除了恢复工作区的文件外，还尝试恢复暂存区。
+
+- 命令：`git stash apply [–index] [<stash>]`
+
+    除了不删除恢复的进度之外，其余和git stash pop命令一样。
+
+- 命令：`git stash drop`
+
+    删除指定的一个进度，默认删除最新的进度，使用方法如git stash drop stash@{0}
+
+- 命令：`git stash clear`
+
+    删除所有存储的进度
+
+- 命令：`git stash show`
+
+    显示stash的内容具体是什么，使用方法如 git stash show stash@{0}
+
 
