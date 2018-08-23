@@ -1,4 +1,6 @@
 [Git权威指南](http://www.worldhello.net/gotgit/index.html)
+[廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+
 # Git初始化
 
 ## 创建版本库以及第一次提交
