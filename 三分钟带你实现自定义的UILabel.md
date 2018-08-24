@@ -42,6 +42,7 @@
 
 - 这几个方法能将字符串绘制到layer上，自定义的Label的`drawRect:`中使用这些方法，就能将文字绘制上去了。
 - 当然如果我们自己实现了这个`drawRect:`方法，系统就不会自动将文字覆盖上去了。
+- [详细请看](https://www.jianshu.com/p/4dd86df5c8ec)
 
 ```
 @interface NSString(NSStringDrawing)
