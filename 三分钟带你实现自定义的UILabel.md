@@ -233,7 +233,7 @@
     @property(nonatomic) HTTextHorizontalAlignment contentHorizontalAlignment;
     ```
 
-- 重新构建初始化方法中实例化
+- 重新构建初始化方法
   
   ```
     - (instancetype)initWithFrame:(CGRect)frame
@@ -279,14 +279,15 @@
 - 实现`drawRect:`方法
 
 ```
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    
+
+    UIFont *font = self.font;
+
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc]initWithAttributedString:self.attributedText];
     //label本身的尺寸
     CGRect bounds = self.bounds;
-    
+
     //获取label减去内边距剩余的空间
     CGFloat contentW = bounds.size.width - self.titleEdgeInsets.left - self.titleEdgeInsets.right;
     CGFloat contentH = bounds.size.height - self.titleEdgeInsets.top - self.titleEdgeInsets.bottom;
@@ -295,7 +296,32 @@
                                       contentW,
                                       contentH);
     
-    CGSize currentTextSize = [self ht_sizeOfString:self.text Font:self.font limitWidth:contentW];
+    CGSize currentTextSize = [self ht_sizeOfString:self.text Font:font limitWidth:contentW];
+    CGSize nextTextSize = [self ht_sizeOfString:self.text Font:[font fontWithSize:font.pointSize+0.5] limitWidth:contentW];
+    
+    
+    if (self.adjustsFontSizeToFitWidth == YES) {
+        
+        BOOL isContain = [self ht_contrastSize:currentTextSize destinationSize:contentBounds.size];
+        BOOL isNextContain = [self ht_contrastSize:nextTextSize destinationSize:contentBounds.size];
+        
+        if (isContain && isNextContain) {
+            //字体还能增大,且重新计算currentTextSize
+            UIFont *newFont = [self ht_contrastAscendingByFont:font destinationSize:contentBounds.size];
+            font = newFont;
+            currentTextSize = [self ht_sizeOfString:self.text Font:font limitWidth:contentW];
+        }else if (!isContain){
+            //字体需要缩小,且重新计算currentTextSize  这里也意味着isNextContain==NO
+            UIFont *newFont = [self ht_contrastDescendingByFont:font destinationSize:contentBounds.size];
+            font = newFont;
+            currentTextSize = [self ht_sizeOfString:self.text Font:font limitWidth:contentW];
+        }else if (isContain && !isNextContain){
+            //意味着字体大小刚刚好，不需要操作
+        }
+        [attributedText removeAttribute:NSFontAttributeName range:NSMakeRange(0, self.attributedText.length)];
+        [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, self.attributedText.length)];
+    }
+    
     CGFloat textRectX = 0 + self.titleEdgeInsets.left;
     CGFloat textRectY = 0 + self.titleEdgeInsets.top;
     CGFloat textRectW = currentTextSize.width;
@@ -312,27 +338,47 @@
             textRectY = bounds.size.height - self.titleEdgeInsets.bottom - textRectH;
             break;
         default:
+            textRectY = 0 + self.titleEdgeInsets.top;
             break;
     }
 
     CGRect textRect = CGRectMake(textRectX, textRectY, textRectW, textRectH);
-    
-    if (self.adjustsFontSizeToFitWidth == YES) {
 
-        BOOL isContain = [self ht_contrastSize:currentTextSize destinationSize:contentBounds.size];
-        
-        if (isContain) {
-            //意味着 text的大小没有超出自身的范围
-
-        }else{
-            //意味着 text的大小超过了自身的范围
-            //此时需要通过暴力计算，计算出刚刚小于自身contentBounds的字号
-            UIFont *newFont = [self ht_contrastDescendingByFont:self.font destinationSize:contentBounds.size];
-            self.font = newFont;
-        }
-    }
-    [self.attributedText drawInRect:textRect];
+    /// NSParagraphStyleAttributeName 这个属性影响换行，实际上没什么作用
+    [attributedText removeAttribute:NSParagraphStyleAttributeName range:NSMakeRange(0, attributedText.length)];
+    [attributedText drawInRect:textRect];
 }
+
+/**
+ 升序查找 大小合适的字体
+ 
+ @param font 原始字体
+ @param desSize 目标尺寸
+ @return 返回刚好符合目标尺寸的字体
+ */
+- (UIFont *)ht_contrastAscendingByFont:(UIFont *)font destinationSize:(CGSize)desSize
+{
+    CGFloat fontSize = _minFontSize;
+
+    for (CGFloat size = fontSize; size < 80; ) {
+        UIFont *newFont = [font fontWithSize:size];
+        CGSize newTextSize = [self ht_sizeOfString:self.text Font:newFont limitWidth:desSize.width];
+        
+        UIFont *lastFont = [font fontWithSize:size+0.5];
+        CGSize lastTextSize = [self ht_sizeOfString:self.text Font:lastFont limitWidth:desSize.width];
+        
+        BOOL isContain = [self ht_contrastSize:newTextSize destinationSize:desSize];
+        BOOL isLastContain = [self ht_contrastSize:lastTextSize destinationSize:desSize];
+
+        if (isContain && !isLastContain) {
+            return newFont;
+        }
+        size = size + 0.5;
+    }
+    return [font fontWithSize:80];
+}
+
+
 /**
  降序查找 大小合适的字体
 
@@ -353,9 +399,9 @@
         if (isContain) {
             return newFont;
         }
-        size = size - 0.05;
+        size = size - 0.5;
     }
-    return [font fontWithSize:0];
+    return [font fontWithSize:_minFontSize];
 }
 
 
@@ -386,7 +432,6 @@
     bounds=[string boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:parameterDict context:nil];
     return bounds.size;
 }
-
 ```
 
 - 最后功能算是实现了，将HTLabel实例化看看效果
