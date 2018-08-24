@@ -1,8 +1,11 @@
 > UILabel是UIKit中提供的文本视图控件，用于在iOS设备上展示文本的基础控件，系统提供给我们开发者使用的UILabel本身已经具备了非常强大的功能，我这里所谓的自定义UIlabel实际上也是在原基础上做功能的增加，但是增加的过程中用到的方法，实际上还能有更多的使用。
 
 参考资料
+
 [UIBezierPath 二次曲线方程式, addQuadCurveToPoint:controlPoint: 如何通过 point.x 获取到 point.y](https://www.jianshu.com/p/785094a01327)
+
 [IOS动画学习小记(1)-图形](https://www.jianshu.com/p/2ad0e265bc50)
+
 [iOS开发 | 自定义不规则label](https://www.jianshu.com/p/fade8341c316)
 
 ### 基础概念
@@ -26,7 +29,7 @@
 
 - `UIBezierPath`:[简单介绍](https://blog.csdn.net/yongyinmg/article/details/38844879)
     - `UIBezierPath`类允许你在自定义的 `View` 中绘制和渲染由直线和曲线组成的路径。你可以在初始化的时候直接为你的`UIBezierPath`指定一个几何图形。通俗点就是`UIBezierPath`用来指定绘制图形路径，而`CAShapeLayer`就是根据路径来绘图的。
-        - UIBezierPath就类似于是一块画板了，以下这些方法就是用来在画板上画线的工具
+        - `UIBezierPath`就类似于是一块画板了，以下这些方法就是用来在画板上画线的工具
         - `moveToPoint:`：设置初始线段的起点
         - `addLineToPoint:`：画一条线
         - `addCurveToPoint:`和`addQuadCurveToPoint:`：分别是绘制`三阶的贝塞尔曲线`和`二阶的贝塞尔曲线`
