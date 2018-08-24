@@ -1,5 +1,9 @@
 > UILabel是UIKit中提供的文本视图控件，用于在iOS设备上展示文本的基础控件，系统提供给我们开发者使用的UILabel本身已经具备了非常强大的功能，我这里所谓的自定义UIlabel实际上也是在原基础上做功能的增加，但是增加的过程中用到的方法，实际上还能有更多的使用。
 
+参考资料
+[UIBezierPath 二次曲线方程式, addQuadCurveToPoint:controlPoint: 如何通过 point.x 获取到 point.y](https://www.jianshu.com/p/785094a01327)
+[IOS动画学习小记(1)-图形](https://www.jianshu.com/p/2ad0e265bc50)
+[iOS开发 | 自定义不规则label](https://www.jianshu.com/p/fade8341c316)
 
 ### 基础概念
 
@@ -453,5 +457,5 @@ label.titleEdgeInsets = UIEdgeInsetsMake(5, 25, 5, 5);
 ![](media/15350192148093.jpg)
 
 
-[Demo地址]
+[Demo地址](https://github.com/KingXcode/HTLabel)
 
