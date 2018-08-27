@@ -77,5 +77,8 @@
     - (nullable instancetype)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
     @end
     ```
+    
+8. 申明子类如果重写该方法，必须调用该父类方法 `NS_REQUIRES_SUPER`
+   在子类重写的父类方法中，必须调用`[super functionName]`,否则编译器会发出警告
 
 
