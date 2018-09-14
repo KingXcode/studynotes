@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ht_showPopView</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    HTPopView *popView = [[HTPopView alloc]initPopViewWithTitle:@"" titleFont:[UIFont systemFontOfSize:15] message:@"" messageFont:[UIFont systemFontOfSize:15] otherButtonTitles:@[@"关闭"] buttonFont:[UIFont systemFontOfSize:15] handler:^(NSInteger index) {
+        if (index == 1) {
+            [__self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
+    [popView setMessageColor:[MyColor pg_mainTitleColor]];
+    [popView setButtonColor:[MyColor pg_mainColor] atIndex:0];
+    [popView show];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>FA500370-7FCB-4545-A3C6-214476437B0F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>ht_showPopView</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>HTPopView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

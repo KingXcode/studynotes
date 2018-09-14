@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ht_creatTableViewSectionHeader</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitleColor:[MyColor pg_mainOtherTitleColor] forState:UIControlStateNormal];
+        [button setBackgroundColor:[MyColor pg_emptyBgColor]];
+        button.titleLabel.font = [UIFont systemFontOfSize:12];
+        [button setTitle:@"" forState:UIControlStateNormal];
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [button setContentEdgeInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
+        return button;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C037D71A-2DE0-4930-8B17-69A167376F3C</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>快速创建table 头部视图使用的按钮</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>ht_creatTableViewHeaderBtn</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

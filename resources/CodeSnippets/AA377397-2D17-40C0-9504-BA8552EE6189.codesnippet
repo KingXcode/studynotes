@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ht_creatCollectionView</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+flowLayout.headerReferenceSize = CGSizeMake(&lt;#width#&gt;, &lt;#height#&gt;);
+flowLayout.footerReferenceSize = CGSizeMake(&lt;#width#&gt;, &lt;#height#&gt;);
+    
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    collectionView.backgroundColor = [UIColor whiteColor];
+    
+[collectionView registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellWithReuseIdentifier:@"cell"];
+    [collectionView registerNib:[UINib nibWithNibName:@"" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"head"];
+    [collectionView registerNib:[UINib nibWithNibName:@"" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
+    [self.view addSubview:collectionView];
+    
+    self.flowLayout = flowLayout;
+    self.collectionview = collectionView;
+    
+    [collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.navigationView.mas_bottom);
+        make.left.bottom.right.equalTo(self.view);
+    }];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>AA377397-2D17-40C0-9504-BA8552EE6189</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>创建collectionView</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>ht_creatCollectionView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ht_emptyView</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeExpression</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> [FORScrollViewEmptyAssistant emptyWithContentView:&lt;#view#&gt; configerBlock:^(FOREmptyAssistantConfiger *configer) {
+        configer.emptySubtitle = @"暂无相关数据";
+        configer.allowScroll = YES;
+        configer.emptySubtitleFont = [UIFont systemFontOfSize:15];
+        configer.emptySubtitleColor = [MyColor pg_disabledTextColor];
+        configer.emptyImage = [UIImage imageNamed:@"bg_beijing"];
+        configer.emptySpaceHeight = 20;
+        configer.shouldDisplay = ^{
+            return YES;
+        };
+    }];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>41ED0168-82DF-4DED-9C07-89B29413E9C6</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>空视图创建</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>ht_emptyView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

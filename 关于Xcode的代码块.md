@@ -1,5 +1,5 @@
 > 关于Xcode的代码块，我感觉应该是这个编译器里最好用的部分的，用的好的话对你开发的速度是成十倍百倍的效率提升。
-> Xcode中的代码块是存储在`/Users/sphere/Library/Developer/Xcode/UserData/CodeSnippets`这个路径中的
+> Xcode中的代码块是存储在`~/Library/Developer/Xcode/UserData/CodeSnippets`这个路径中的
 
 &emsp;&emsp;将近3年的Xcode的使用经验，我自己多少也总结了不少自己常用的代码块，请将目光向下移动。
 

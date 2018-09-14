@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>ht_creatButton</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIButton *&lt;#button#&gt; = [UIButton buttonWithType:UIButtonTypeCustom];
+        [&lt;#button#&gt; setTitleColor:[MyColor pg_mainTitleColor] forState:UIControlStateNormal];
+&lt;#button#&gt;.titleLabel.font = [UIFont systemFontOfSize:&lt;#size#&gt;];
+        [&lt;#button#&gt; setTitle:@"" forState:UIControlStateNormal];
+        &lt;#button#&gt;.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>468754C9-6BEF-4389-935C-4F9CB0AE35A0</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>快速创建按钮</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>ht_creatButton</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
