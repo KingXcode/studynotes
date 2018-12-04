@@ -81,4 +81,48 @@
 8. 申明子类如果重写该方法，必须调用该父类方法 `NS_REQUIRES_SUPER`
    在子类重写的父类方法中，必须调用`[super functionName]`,否则编译器会发出警告
 
+9. `__has_include`：用来检查Frameworks是否引入某个类
+
+    ```
+    #if __has_include(<YYCache/YYCache.h>)
+    #import <YYCache/YYMemoryCache.h>
+    #import <YYCache/YYDiskCache.h>
+    #import <YYCache/YYKVStorage.h>
+    #elif __has_include(<YYWebImage/YYCache.h>)
+    #import <YYWebImage/YYMemoryCache.h>
+    #import <YYWebImage/YYDiskCache.h>
+    #import <YYWebImage/YYKVStorage.h>
+    #else
+    #import "YYMemoryCache.h"
+    #import "YYDiskCache.h"
+    #import "YYKVStorage.h"
+    #endif
+    ```
+
+10. 接口中 `nullable` 的是少数,一般都为`nonnull`,为了防止写一大堆 `nonnull`，`Foundation`供了一对宏`NS_ASSUME_NONNULL_BEGIN`、`NS_ASSUME_NONNULL_END`，包在里面的对象默认加 `nonnull` 修饰符，如果是`nullable`的,只需要把 `nullable` 的指出来就行
+    
+    ```
+    NS_ASSUME_NONNULL_BEGIN
+    @interface YYCache : NSObject
+    ...
+    - (nullable instancetype)initWithName:(NSString *)name;
+    ...
+    @end
+    NS_ASSUME_NONNULL_END
+    ```
+
+11. `UNAVAILABLE_ATTRIBUTE`告诉编译器该方法失效
+    
+    - 系统中的定义：
+    `#define UNAVAILABLE_ATTRIBUTE __attribute__((unavailable))`
+
+    - __attribute__是Clang提供的一种源码注解，方便开发者向编译器表达某种要求,括号里是传达某种命令. 为方便使用，一些常用属性也被Cocoa定义成宏, 比如UNAVAILABLE_ATTRIBUTE、NS_CLASS_AVAILABLE_IOS(9_0). unavailable告诉编译器该方法失效. 在封装单例或初始化某个类前必须做一些事时,对一些方法禁用是非常不错的选择. 还可以给个message提示:
+
+      ```
+      + (instancetype)alloc __attribute__((unavailable("alloc方法不可用，请用initWithName:")));
+      - (instancetype)init __attribute__((unavailable("init方法不可用，请用initWithName:")));
+      + (instancetype)new __attribute__((unavailable("new方法不可用，请用initWithName:")));
+      - (instancetype)copy __attribute__((unavailable("copy方法不可用，请用initWithName:")));
+     ```
+
 
