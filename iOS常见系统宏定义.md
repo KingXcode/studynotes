@@ -99,7 +99,7 @@
     #endif
     ```
 
-10. 接口中 `nullable` 的是少数,一般都为`nonnull`,为了防止写一大堆 `nonnull`，`Foundation`供了一对宏`NS_ASSUME_NONNULL_BEGIN`、`NS_ASSUME_NONNULL_END`，包在里面的对象默认加 `nonnull` 修饰符，如果是`nullable`的,只需要把 `nullable` 的指出来就行
+10. 接口中 `nullable` 的是少数,一般都为`nonnull`,为了防止写一大堆 `nonnull`，`Foundation`提供了一对宏`NS_ASSUME_NONNULL_BEGIN`、`NS_ASSUME_NONNULL_END`，包在里面的对象默认加 `nonnull` 修饰符，如果是`nullable`的,只需要把 `nullable` 的指出来就行
     
     ```
     NS_ASSUME_NONNULL_BEGIN
